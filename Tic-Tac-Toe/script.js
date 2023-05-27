@@ -19,7 +19,7 @@ const toggleBtn = (element) => {
 const endPanel = document.createElement("div");
 endPanel.style.position = "absolute";
 endPanel.style.left = "50%";
-endPanel.style.top = "17.5%";
+endPanel.style.top = "156.59px";
 endPanel.style.marginLeft = "-11%";
 endPanel.style.backgroundColor = "black";
 endPanel.style.opacity = 0.0;
