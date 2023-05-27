@@ -1,0 +1,112 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+.board {
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    margin-left: -11%;
+    font-family: "Open Sans";
+    font-weight: bold;
+}
+
+#link:visited, #link:link, #link:hover, #link:active {
+    color: black;
+    text-decoration: none;
+}
+
+#back {
+    margin-top: 5px;
+    border: none;
+    width: 310px;
+    height: 50px;
+    font-size: 20px;
+    font-family: "Open Sane", "Arial";
+    background: rgb(209, 255, 130);
+    transition-duration: 0.3s;
+}
+
+#back:hover {
+    background: rgb(164, 199, 102);
+}
+
+#back:active {
+    background-color: rgb(191, 232, 121);
+}
+
+.options {
+    padding-top: 5px;
+}
+
+#bot, #multi {
+    border: none;
+    background-color: rgba(254, 237, 43, 0.739);
+    width: 152.5px;
+    height: 75px;
+    font-family: "Open Sans", "Arial";
+    font-size: 20px;
+    transition-duration: 0.3s;
+}
+
+#bot:hover, #multi:hover {
+    background-color: rgb(191, 180, 54);
+}
+
+#bot:hover:active, #multi:hover:active {
+    background-color: rgb(233, 219, 68);
+}
+
+#title {
+    text-align: center;
+}
+
+#player-turn {
+    text-align: center;
+    margin-top: -10px;
+}
+
+#a, #b, #c, #d, #e, #f, #g, #h, #i {
+    width: 100px;
+    height: 100px;
+    border: none;
+    background-color: rgba(252, 169, 74, 0.772);
+    font-size: 50px;
+    transition-duration: 0.3s;
+}
+
+#a:hover, #b:hover, #c:hover, #d:hover, #e:hover, #f:hover, #g:hover, #h:hover, #i:hover {
+    background-color: rgba(179, 96, 0, 0.772)!important;
+}
+
+#a:active, #b:active, #c:active, #d:active, #e:active, #f:active, #g:active, #h:active, #i:active {
+    background-color: rgb(185, 99, 0)!important;
+}
+
+.restart {
+    padding-top: 5px;
+}
+
+#restart {
+    display: grid;
+    width: 310px;
+    height: 50px;
+    border: none;
+    font-size: 20px;
+    padding-top: 15px;
+    background-color: rgb(255, 99, 99);
+    transition-duration: 0.3s;
+}
+
+#restart:hover {
+    background-color: rgb(183, 71, 71);
+}
+
+#restart:active {
+    background-color: rgb(255, 100, 100)!important;
+}
+
+.buttons {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 5px;
+    row-gap: 5px;
+}

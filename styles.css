@@ -1,0 +1,44 @@
+#link1:visited, #link1:link, #link1:hover, #link1:active {
+    color: white;
+    text-decoration: none;
+}
+
+#link2:visited, #link2:link, #link2:hover, #link2:active {
+    color: white;
+    text-decoration: none;
+}
+
+.buttons {
+    padding-top: 15px;
+    padding-left: 14px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 9em repeat(5, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+#TTT, #golf {
+    width: 142.4px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(92, 92, 92);
+    transition: 0.6s;
+    font-size: 18px;
+    overflow: auto;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+#TTT:hover, #golf:hover {
+    transform: scale(1.2);
+}
+
+#TTT:active, #golf:active {
+    background-color: rgb(0, 0, 0)!important;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <title>Tic-Tac-Toe</title>
+</head>
+<body>
+    <div class="board">
+        <h1 id="title">Tic-Tac-Toe</h1>
+        <h3 id="player-turn">Player 1 Turn</h3>
+        <div class="buttons">
+            <button id="a" onclick="pressed(this)"></button>
+            <button id="b" onclick="pressed(this)"></button>
+            <button id="c" onclick="pressed(this)"></button>
+            <button id="d" onclick="pressed(this)"></button>
+            <button id="e" onclick="pressed(this)"></button>
+            <button id="f" onclick="pressed(this)"></button>
+            <button id="g" onclick="pressed(this)"></button>
+            <button id="h" onclick="pressed(this)"></button>
+            <button id="i" onclick="pressed(this)"></button>
+        </div>
+        <div class="restart"><button id="restart" onclick="restart()">Restart</button></div>
+        <div class="options">
+            <button id="bot" onclick="mode(this)">Single Player</button>
+            <button id="multi" onclick="mode(this)" disabled>Multiplayer</button>
+        </div>
+        <div class="back"><a href="../index.html" id="link"><button id="back">Back</button></a></div>
+    </div>
+</body>
+</html>
