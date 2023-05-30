@@ -5,7 +5,7 @@
     justify-content: center;
     grid-template-rows: auto auto;    
     width: 400px;
-    margin-top: 30%;
+    margin-top: 25%;
     margin-right: auto;
     margin-left: auto;
 }
@@ -41,6 +41,18 @@ button {
 .options button {
     margin: 3px;
     font-size: 40px; 
+    font-family: "Open Sans", "Arial";
+}
+
+ul {
+    list-style-type: none;
+    overflow: hidden;
+}
+
+li {
+    display: inline-block;
+    margin: 0 10% 0 10%;
+    font-size: 40px;
     font-family: "Open Sans", "Arial";
 }
 
