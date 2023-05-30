@@ -1,9 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
-.container {
-    height: 100%;
-}
-
 .pattern-display {
     display: grid;
     justify-content: center;
