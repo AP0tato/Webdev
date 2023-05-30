@@ -5,9 +5,15 @@
     justify-content: center;
     grid-template-rows: auto auto;    
     width: 400px;
-    margin-top: 25%;
+    margin-top: 10%;
     margin-right: auto;
     margin-left: auto;
+}
+
+.time {
+    font-size: 80px;
+    font-family: "Open Sans", "Arial";
+    text-align: center;
 }
 
 .pattern-display .footer {
@@ -50,8 +56,8 @@ ul {
 }
 
 li {
-    display: inline-block;
-    margin: 0 10% 0 10%;
+    text-align: right;
+    margin-right: 20px;
     font-size: 40px;
     font-family: "Open Sans", "Arial";
 }
