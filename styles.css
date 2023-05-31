@@ -18,7 +18,7 @@
     row-gap: 20px;
 }
 
-#TTT, #golf {
+button {
     width: 142.4px;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -35,10 +35,10 @@ img {
     height: auto;
 }
 
-#TTT:hover, #golf:hover {
+button:hover {
     transform: scale(1.2);
 }
 
-#TTT:active, #golf:active {
+button:active {
     background-color: rgb(0, 0, 0)!important;
 }
