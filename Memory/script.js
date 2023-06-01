@@ -7,6 +7,7 @@ const sleep = (ms) => {
 
 async function start() 
 {
+    document.getElementById("start").disabled = true;
     lives = 3;
     time = 3;
     speed = 2;
@@ -21,6 +22,7 @@ async function start()
         await check();
     }
     update();
+    document.getElementById("start").disabled = false;
 }
 
 function update() {

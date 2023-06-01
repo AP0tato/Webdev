@@ -52,68 +52,85 @@ function aiMove()
         m["d2"] += arr[2-i][i];
     }
 
-    var pos;
-    for(const [key, value] of Object.entries(m))
+    var pos = [];
+
+    if(m.r1==0)
+        pos = [0, parseInt(Math.random()*3)];
+    else if(m.r2==0)
+        pos = [1, parseInt(Math.random()*3)];
+    else if(m.r3==0)
+        pos = [2, parseInt(Math.random()*3)];
+    else if(m.l1==0)
+        pos = [parseInt(Math.random()*3), 0];
+    else if(m.l2==0)
+        pos = [parseInt(Math.random()*3), 1];
+    else if(m.l3==0)
+        pos = [parseInt(Math.random()*3), 2];
+    else if(m.d1==0)
     {
-        if(value==-2) 
-        {
-            pos = key;
-            break
-        }
+        let t = parseInt(Math.random()*3);
+        pos = [t, t];
     }
-    for(const [key, value] of Object.entries(m))
+    else if(m.d2==0)
     {
-        if(value==2)
-        {
-            pos = key;
-            break;
-        }
+        let t = parseInt(Math.random()*3);
+        pos = [t, t==2?0:t==1?1:2];
     }
 
-    var t = [];
+    pos = getPos(-1, pos, m);
 
-    if(pos==undefined)
-    {
-        if(arr[1][1]==0)
-        {
-            t = [4];
-        }
-        else
-        {
-            if(arr[0][1]==0)
-                t = [1];
-            else if(arr[1][0]==0)
-                t = [3];
-            else if(arr[1][2]==0)
-                t = [5]
-            else if(arr[2][1]==0)
-                t = [7];
-            else if(arr[0][0]==0)
-                t = 0;
-            else if(arr[0][2]==0)
-                t = 2;
-            else if(arr[2][0]==0)
-                t = 6;
-            else if(arr[2][2]==0)
-                t = 8;
+    pos = getPos(1, pos, m);
 
-        }
-    }
-    else
-    {
-        t = map[pos];
-    }
+    pos = getPos(-2, pos, m);
 
-    for(let i = 0; i < t.length; i++)
+    pos = getPos(2, pos, m);
+
+    if(isDraw()) return;
+
+    arr[pos[0]][pos[1]] = 1;
+    document.getElementById(buttonIds[ (pos[0]*3)+pos[1] ]).innerHTML = 'O';
+}
+
+function getPos(x, p, m)
+{
+    var pos = p;
+
+    if(m.r1==x)
+        pos = [0, findEmptyCell(arr[0])];
+    else if(m.r2==x)
+        pos = [1, findEmptyCell(arr[1])];
+    else if(m.r3==x)
+        pos = [2, findEmptyCell(arr[2])];
+    else if(m.l1==x)
+        pos = [findEmptyCell( [arr[0][0], arr[1][0], arr[2][0]] ), 0];
+    else if(m.l2==x)
+        pos = [findEmptyCell( [arr[0][1], arr[1][1], arr[2][1]] ), 1];
+    else if(m.l3==x)
+        pos = [findEmptyCell( [arr[0][2], arr[1][2], arr[2][2]] ), 2];
+    else if(m.d1==x)
     {
-        let val = t[i];
-        if(arr[parseInt(val/3)][val%3]==0)
-        {
-            document.getElementById(buttonIds[val]).innerHTML = "O";
-            arr[parseInt(val/3)][val%3]=1;
-            break;
-        }
+        let t = findEmptyCell( [arr[0][0], arr[1][1], arr[2][2]] )
+        pos = [t, t];
     }
+    else if(m.d2==x)
+    {
+        pos = findEmptyCell( [arr[2][0], arr[1][1], arr[0][2]] );
+        pos = [pos==0?2:pos==1?1:0, pos];
+    }
+    else 
+        pos = p;
+
+    if(pos[0]==undefined||pos[1]==undefined) 
+        pos = p;
+    
+    return pos;
+}
+
+function findEmptyCell(arr)
+{
+    for(let i = 0; i < arr.length; i++)
+        if(arr[i]==0)
+            return i;
 }
 
 async function pressed(element)
@@ -126,7 +143,7 @@ async function pressed(element)
         document.getElementById(element.id).innerHTML = isX?"X":"O";
         document.getElementById("player-turn").innerHTML = "Player " + (isX==false?1:2).toString() + " Turn";
         if(isX) { xIndexes.push([parseInt(index/3), index%3]); }
-        isX = !isX; // Causes X to become -1
+        isX = !isX;
         arr[parseInt(index/3)][index%3] = isX?1:-1;
     }
     winner = hasWon();
@@ -144,7 +161,6 @@ async function pressed(element)
             isX = !isX;
         }
     }
-
     winner = hasWon();
     if(winner[0]!=0)
     {
@@ -154,6 +170,7 @@ async function pressed(element)
     {
         gameDraw();
     }
+    for(let i = 0; i < arr.length; i++) console.log(arr[i]);
 }
 
 function restart()
@@ -214,25 +231,25 @@ function hasWon()
     var d1 = 0, d2 = 0;
     for(let i = 0; i < 3; i++)
     {
-        r1 += arr[0][i]*Math.pow(10, 2-i);
-        r2 += arr[1][i]*Math.pow(10, 2-i);
-        r3 += arr[2][i]*Math.pow(10, 2-i);
+        r1 += arr[0][i];
+        r2 += arr[1][i];
+        r3 += arr[2][i];
 
-        l1 += arr[i][0]*Math.pow(10, 2-i);
-        l2 += arr[i][1]*Math.pow(10, 2-i);
-        l3 += arr[i][2]*Math.pow(10, 2-i);
+        l1 += arr[i][0];
+        l2 += arr[i][1];
+        l3 += arr[i][2];
 
-        d1 += arr[i][i]*Math.pow(10, 2-i);
-        d2 += arr[2-i][i]*Math.pow(10, 2-i);
+        d1 += arr[i][i];
+        d2 += arr[2-i][i];
     }
 
-    if( (r1==-111||r2==-111||r3==-111||l1==-111||l2==-111||l3==-111||d1==-111||d2==-111) )
+    if( (r1==-3||r2==-3||r3==-3||l1==-3||l2==-3||l3==-3||d1==-3||d2==-3) )
     {
-        return [ 1, (r1==-111?"r1":r2==-111?"r2":r3==-111?"r3":l1==-111?"l1":l2==-111?"l2":l3==-111?"l3":d1==-111?"d1":"d2") ];
+        return [ 1, (r1==-3?"r1":r2==-3?"r2":r3==-3?"r3":l1==-3?"l1":l2==-3?"l2":l3==-3?"l3":d1==-3?"d1":"d2") ];
     }
-    else if( (r1==111||r2==111||r3==111||l1==111||l2==111||l3==111||d1==111||d2==111) )
+    else if( (r1==3||r2==3||r3==3||l1==3||l2==3||l3==3||d1==3||d2==3) )
     {
-        return [ -1, (r1==111?"r1":r2==111?"r2":r3==111?"r3":l1==111?"l1":l2==111?"l2":l3==111?"l3":d1==111?"d1":"d2") ];
+        return [ -1, (r1==3?"r1":r2==3?"r2":r3==3?"r3":l1==3?"l1":l2==3?"l2":l3==3?"l3":d1==3?"d1":"d2") ];
     }
     else 
     {
